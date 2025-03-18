@@ -1,0 +1,556 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Nunito", serif;
+    font-weight: 100 ;
+    color: white;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+/* Vidéo en arrière-plan */
+.video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    opacity: 0.4;
+    background:url(https://cdn.pixabay.com/video/2021/07/25/82743-580050767_large.mp4);
+}
+
+#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.123);
+    z-index: 0;
+    pointer-events: none;  
+}
+
+/* Barre de navigation */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000e8;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 10px 0;
+    z-index: 10;
+}
+
+.navbar .logo {
+    width: 35px;
+    margin-right: auto;
+    margin-left: 20px;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 5x;
+}
+
+.navbar ul li {
+    font-size: 1.1rem;
+
+    position: relative;
+    display: inline-block;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    padding: 8px 55px;
+    color: rgba(255, 255, 255, 0.8);
+    transition: all 0.5s ease;
+    border-radius: 20px;
+    font-size: 1.5rem;
+    font-family: "Nunito", serif;
+    font-weight: 150 ;
+    margin-left: 100px;
+    display: block;
+}
+
+.navbar ul li a:hover {
+    color: white;
+    text-shadow: 0 0 10px white;
+    font-weight: 250;
+}
+
+/* Sous-menu caché par défaut */
+.sous-menu {
+    /*display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    list-style: none;
+    padding: 0;
+    z-index: 100;
+    top: calc(100% + 5px);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);*/
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    background-color: #000000e8;
+}
+
+/*Lorsque la souris survole l'onglet "Services" (ou le sous-menu lui-même) */
+.has-sous-menu:hover .sous-menu,
+.has-sous-menu .sous-menu:hover {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0s;
+}
+
+.sous-menu li {
+    display: block;
+}
+  
+.sous-menu li a {
+    padding: 10px 15px;
+    white-space: nowrap;
+}
+
+.has-sous-menu .sous-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    /*Ajoute5pxpourledécalerverslebas*/left: 0;
+    top: calc(100% + 10px);
+    /*Décalageparrapportàl'onglet"Services"*/left: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease 0.1s, transform 0.3s ease 0.1s;
+    z-index: 100;
+}
+  
+  
+  /* Affichage du sous-menu au survol de "Services" */
+.has-sous-menu:hover .sous-menu {
+    display: block;
+}
+
+/* Section Profil */
+#profil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.123);
+    text-align: center;
+}
+
+.span{
+    color: rgb(255, 255, 255);
+    font-style:bold;
+    font-size: 1.5rem;
+}
+
+.main {
+    position: relative;
+    z-index: 1;
+}
+
+.main h1{
+    font-weight: 100;
+}
+
+
+
+.main img{
+    filter: brightness(70%);
+}
+
+#intro p{
+    text-align: center;
+}
+
+.headings {
+    font-family: "Nunito", serif;
+    font-weight: 100 ;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.btn{
+    margin: 100px;
+    padding: 20px 45px;
+    border: none;
+    color: #ffffffd0;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    border-radius: 48px;
+    border: 1px solid rgba(255, 255, 255, 0);
+    font-size: 1.1rem;
+    background-color: #4e4e4e;
+    box-shadow: 0 0 15px #610000;
+
+}
+
+.btn::after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.39);
+    left: 0;
+    top: 0;
+    border-radius: 48px;
+}
+
+.btn::before {
+    content: "";
+    background: linear-gradient(45deg,#7E0000, #00000000,#7E0000,#00000000,#7E0000);
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    background-size: 600%;
+    z-index: -1;
+    width: calc(100% + 10px);
+    height:  calc(100% + 10px);
+    filter: blur(8px);
+    animation: glowing 12s linear infinite;
+    transition: opacity .2s ease-in-out;
+    opacity: 0;
+    border-radius: 48px;
+}
+
+@keyframes glowing {
+    0% {background-position: 0 0;}
+    50% {background-position: 400% 0;}
+    100% {background-position: 0 0;}
+}
+  
+.btn:hover::before {
+    opacity: 1;
+}
+  
+  .btn:active:after {
+    background: transparent;
+}
+  
+/* Section À propos */
+#apropos {
+    padding: 80px;
+    background-color: rgba(0, 0, 0, 0.123);
+    text-align: center;
+}
+
+#apropos h1 {
+    font-size: 3rem;
+    color: rgba(58, 0, 0, 0.8);
+}
+
+.headings{
+    margin-top: 235px;
+    font-weight: 400;
+    color: rgba(58, 0, 0, 0.8);
+    cursor: default;
+    font-size: 3rem;
+}
+
+#intro a{
+    font-size: 1.6rem;
+    color: rgba(58, 0, 0, 0.8);
+    font-weight: 400;
+
+}
+
+#intro p {
+    font-family: "Nunito", serif;
+    font-weight: 150 ;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: rgba(58, 0, 0, 0.8);
+    font-weight: 400;
+    margin-top: 60px;
+}
+
+/* Section Page Accueil : on active Flexbox */
+.page-accueil {
+    justify-content: space-between;   /* Répartit l'image et le titre aux extrémités */
+    align-items: center;              /* Centre verticalement l'image et le H1 */
+    width: 100%;
+}
+
+/* Image de la page d'accueil */
+.background-image {
+    width: 60%;       /* L'image occupe 40% de la largeur */
+    height: auto;
+}
+
+/* Titre de la page d'accueil */
+.page-accueil-h1 {
+    width: 80%;       /* Le titre occupe 50% de la largeur */
+    text-align: right;/* Texte aligné à droite */
+    margin: 0;        /* Supprime la marge par défaut */
+    font-size: 3rem;  /* Taille du texte */
+    color: black;
+}
+
+.btn{
+    margin: 100px;
+    padding: 20px 45px;
+    border: none;
+    color: #ffffffb0;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    border-radius: 48px;
+    border: 1px solid rgba(255, 255, 255, 0.227);
+    font-size: 1.1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Slider */
+
+.slider {
+    float: right;     
+    width: 100%;             
+    margin: 0px 50px 50px 0; 
+    max-width: 800px; /* Largeur maximum du slider */
+    overflow: hidden; /* Masque le débordement */
+    border: 2px solid #cccccc00;
+    border-radius: 10px;  }
+
+  /* Conteneur des images en flexbox */
+  .slides {
+    display: flex;
+    width: 100%; /* 100% pour chaque image multiplié par le nombre d'images */
+    animation: slide 12s infinite; /* Animation continue sur 12 secondes */
+  }
+  /* Chaque image prend la largeur du slider */
+  .slides img {
+    width: 100%;
+    max-width: fit-content;
+    display: block;
+  }
+
+  /* Animation clé pour faire défiler les images */
+  @keyframes slide {
+    0%   { transform: translateX(0%); }
+    25%  { transform: translateX(0%); }
+    33%  { transform: translateX(-100%); }
+    58%  { transform: translateX(-100%); }
+    66%  { transform: translateX(-200%); }
+    91%  { transform: translateX(-200%); }
+    100% { transform: translateX(0%); }
+  }
+
+/* Section services */
+
+#services{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.123);
+    color: rgba(255, 255, 255, 0.306);
+    align-items: center;
+    padding: 60px ;
+    z-index: -7;
+}
+
+.galerie{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    box-sizing: border-box;
+    align-items: center;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 80px;
+}
+
+.galerie-icon{
+    justify-content: center;
+    align-items: center;
+
+}
+
+.galerie-info{
+    place-items: center; 
+}
+
+.galerie h4{
+    font-family: "Nunito", serif;
+    font-weight: 400 ;
+    font-size: 1.6rem;
+    color: #ffffff;
+    text-align: center;
+}
+
+.galerie p{
+    text-align: center;
+    font-family: "Nunito", serif;
+    font-weight: 150 ;
+    color: #ffffffae;
+    font-size: 1.3rem;
+}
+
+.galerie-box{
+    background-color: #3f0000ce;
+    margin: 0 10px;
+    padding: 20px;
+    flex-direction: column;
+    width: 410px;
+    height: 450px;
+    border-radius: 20px;
+    margin-bottom: 15%;
+}
+
+.galerie img{
+    filter: brightness(100%);
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+}
+
+
+
+/* Section Contact */
+
+#contact{
+    padding : 15rem;
+    z-index: 1;
+}
+
+.container h2{
+    text-align: center;
+    font-family: "Nunito", serif;
+    font-weight: 400;
+    font-size: 2.8rem;
+    z-index: 1;
+    color: #7E0000;
+    padding: 70px;
+}
+
+.contact form {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+    font-family: "Nunito", serif;
+    font-weight: 150;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.342);
+    padding: 20px;
+    border-radius: 10px;
+}
+  
+  .form-group {
+    margin-bottom: 1rem;
+    z-index: 1;
+}
+
+.form-group ::placeholder {
+    color: #7E0000;
+    font-family: "Nunito", serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    z-index: 1;
+    color: #7E0000;
+    font-weight: 400;
+    font-size: 1.8rem;
+}
+  
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 21px;
+    border: solid #fff;
+    z-index: 1;
+}
+  
+  #contact .container .btn{
+    display: block;   /* Passe le bouton en block */
+    margin: 0 auto;   /* Centre horizontalement avec des marges automatiques */
+    margin-top: 50px;
+  }
+
+  #contact .btn{
+    background-color: rgb(255, 255, 255);
+    color: #00000093;
+  }
+
+/*Section infos*/
+
+#infos{
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.4);
+    align-items: center;
+    padding: 5rem;
+}
+
+#infos img{
+    width: 2rem;
+}
+
+#infos h1{
+    color: rgb(255, 255, 255);
+    font-family: "Nunito", serif;
+    font-weight: 150 ;
+    font-size: 2.5rem;
+    padding: 0px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#infos a{
+    padding : 20px;
+    font-family: "Nunito", serif;
+    font-weight: 150 ;
+}
+
+.email{
+    margin: 20px;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.726);
+    font-size: 1.3rem;
+    font-family: "Nunito", serif;
+    font-weight: 150 ;
+    z-index: 10;
+}
+
+.tel{
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.726);
+    font-size: 1.3rem;
+    font-family: "Nunito", serif;
+    font-weight: 150 ;
+}
+
+/* Footer */
+footer {
+    background-color: #3b0000d0;
+
+    color: white;
+    text-align: center;
+    padding: 1.1rem;
+  }
+  
