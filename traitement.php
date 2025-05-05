@@ -1,8 +1,11 @@
 <?php
-// Inclusion manuelle
-require 'PHPMailer/traitement.php';
+// Inclusion manuelle des fichiers PHPMailer
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+require 'PHPMailer/Exception.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nom = htmlspecialchars(trim($_POST["nom"]));
@@ -17,15 +20,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $mail->isSMTP();
             $mail->Host       = 'smtp.gmail.com';
             $mail->SMTPAuth   = true;
-            $mail->Username   = 'tonemail@gmail.com';        // Ton adresse Gmail
+            $mail->Username   = 'tonemail@gmail.com';       // remplace par ton adresse Gmail
+            $mail->Password   = 'mot-de-passe-app';         // mot de passe d'application Gmail
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
             $mail->Port       = 465;
 
-            // Destinataires
+            // Expéditeur et destinataire
             $mail->setFrom($email, $nom);
-            $mail->addAddress('anaiszaytoun09@gmail.com');         // Le tien
+            $mail->addAddress('anaiszaytoun09@gmail.com');  // destinataire
 
-            // Contenu du mail
+            // Contenu de l'e-mail
             $mail->isHTML(false);
             $mail->Subject = "Message depuis le formulaire";
             $mail->Body    = "Nom: $nom\nEmail: $email\nMessage:\n$message";
@@ -33,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Envoi
             $mail->send();
 
-            // Redirection vers la page de confirmation
+            // Redirection après envoi
             header("Location: confirmation.html");
             exit();
 
