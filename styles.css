@@ -67,9 +67,9 @@ body {
 
 .navbar ul li {
     font-size: 1.1rem;
-
     position: relative;
     display: inline-block;
+    margin-right: 50px;
 }
 
 .navbar ul li a {
@@ -430,7 +430,7 @@ body {
 /* Section Contact */
 
 #contact{
-    padding : 15rem;
+    padding: 125px;
     z-index: 1;
 }
 
